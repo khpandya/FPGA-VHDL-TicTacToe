@@ -1,16 +1,16 @@
 library ieee;
 use ieee.std_logic_1164.all;
-use ieee.std_logic_unsigned.all;
+use ieee.std_logic_unsigned.all; -- @suppress "Deprecated package"
 
 entity Decoder_4_16 is
-	port(input : in  std_logic_vector(3 downto 0);
-		  output: out std_logic_vector(15 downto 0);
-   );
-end Decoder4_16;
+    port(input  : in  std_logic_vector(3 downto 0);
+         output : out std_logic_vector(15 downto 0)
+        );
+end Decoder_4_16;
 
-architecture logic of Cell_logic is
-
-	output(0)  <= (not input(3) and not input(2) and not input(1) and not input(0)); -- 0000
+architecture logic of Decoder_4_16 is
+begin
+    output(0)  <= (not input(3) and not input(2) and not input(1) and not input(0)); -- 0000
 	output(1)  <= (not input(3) and not input(2) and not input(1) and     input(0)); -- 0001
 	output(2)  <= (not input(3) and not input(2) and     input(1) and not input(0)); -- 0010
 	output(3)  <= (not input(3) and not input(2) and     input(1) and     input(0)); -- 0011
@@ -26,7 +26,4 @@ architecture logic of Cell_logic is
 	output(13) <= (    input(3) and     input(2) and not input(1) and     input(0)); -- 1101
 	output(14) <= (    input(3) and     input(2) and     input(1) and not input(0)); -- 1110
 	output(15) <= (    input(3) and     input(2) and     input(1) and     input(0)); -- 1111
-
-
-
 end logic;
