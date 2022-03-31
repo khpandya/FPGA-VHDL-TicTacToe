@@ -1,4 +1,3 @@
-
 --https://allaboutfpga.com/vhdl-code-flipflop-d-t-jk-sr/#:~:text=Flipflop%20truth%20table-,VHDL%20Code%20for%20T%C2%A0FlipFlop,-library%20IEEE%3B
 
 library IEEE;
