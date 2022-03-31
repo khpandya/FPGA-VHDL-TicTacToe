@@ -1,0 +1,119 @@
+
+library ieee;
+    use ieee.std_logic_1164.all;
+    use ieee.std_logic_unsigned.all;
+	 
+entity Mar28 is
+    port(SW : in std_logic_vector (9 downto 0);
+			KEY: in std_logic_vector (3 downto 0);
+         HEX0, HEX1, HEX2, HEX3, HEX4, HEX5 : out std_logic_vector (6 downto 0));
+end Mar28;
+
+architecture logic of Mar28 is
+
+
+
+component Decoder4_16 is
+    port (
+	 
+	 -- I/O
+	 
+	 );
+end component;
+
+
+
+
+component Display_eval is
+    port (
+	 
+	 -- I/O
+	 
+	 );
+end component;
+
+
+
+
+component Cell_logic is
+    port (
+	 
+	 -- I/O
+	 
+	 );
+end component;
+
+
+
+
+component Win_logic is
+    port (
+	 
+	 -- I/O
+	 
+	 );
+end component;
+
+
+
+
+component Valid_selection is
+    port (
+	 
+	 -- I/O
+	 
+	 );
+end component;
+
+
+
+
+component TFF is
+    port (
+	 
+	 -- I/O
+	 
+	 );
+end component;
+
+
+
+
+component DFF is
+    port (
+	 
+	 -- I/O
+	 
+	 );
+end component;
+		  
+
+
+
+signal TIME_1s, TIME_10s, TIME_1m, TIME_10m, TIME_1h, TIME_10h, TIME_1d, LOAD_HR_FLAG, LOAD_MIN_FLAG, HR_20_FLAG_INT: std_logic := '0';
+signal COUNT_1s, COUNT_10s, COUNT_1m, COUNT_10m, COUNT_1h, COUNT_10h, COUNT_1d, LOAD_LEFT, LOAD_RIGHT: std_logic_vector (3 downto 0);
+signal RESET_SEC: std_logic;
+
+BEGIN
+
+load_ctrl: load_controller port map(LOAD_LEFT, LOAD_RIGHT, LOAD_HR_FLAG, LOAD_MIN_FLAG, SW(7 downto 4), SW(3 downto 0), KEY(2), KEY(3));
+
+one_sec_clk: twenty_six_bit_counter port map(TIME_1s, CLOCK_50, KEY(0));
+counter_1s: four_bit_counter_9 port map(TIME_10s, COUNT_1s, '1' ,TIME_1s, RESET_SEC, LOAD_RIGHT);
+counter_10s: four_bit_counter_5 port map(TIME_1m, COUNT_10s, '1' ,TIME_10s, RESET_SEC, LOAD_LEFT);
+counter_1m: four_bit_counter_9 port map(TIME_10m, COUNT_1m, LOAD_MIN_FLAG ,TIME_1m, KEY(0), LOAD_RIGHT);
+counter_10m: four_bit_counter_5 port map(TIME_1h, COUNT_10m, LOAD_MIN_FLAG ,TIME_10m, KEY(0), LOAD_LEFT);
+counter_1h: four_bit_counter_3 port map(TIME_10h, COUNT_1h, HR_20_FLAG_INT, LOAD_HR_FLAG ,TIME_1h, KEY(0), LOAD_RIGHT);
+counter_10h: four_bit_counter_2 port map(TIME_1d, COUNT_10h, HR_20_FLAG_INT, LOAD_HR_FLAG ,TIME_10h, KEY(0), LOAD_LEFT);
+
+hex_1s : seven_segment_decoder port map(COUNT_1s, HEX0);
+hex_10s : seven_segment_decoder port map(COUNT_10s, HEX1);
+hex_1m : seven_segment_decoder port map(COUNT_1m, HEX2);
+hex_10m : seven_segment_decoder port map(COUNT_10m, HEX3);
+hex_1h : seven_segment_decoder port map(COUNT_1h, HEX4);
+hex_10h : seven_segment_decoder port map(COUNT_10h, HEX5);
+
+RESET_SEC <= KEY(0) and (KEY(2) and KEY(3));
+
+
+END logic;

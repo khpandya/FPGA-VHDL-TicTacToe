@@ -1,0 +1,49 @@
+Info: Starting: Create block symbol file (.bsf)
+Info: qsys-generate C:\Users\seand\Desktop\Programming\Mar28\RAMSYS.qsys --block-symbol-file --output-directory=C:\Users\seand\Desktop\Programming\Mar28\RAMSYS --family="Cyclone V" --part=5CSEMA5F31C6
+Progress: Loading Mar28/RAMSYS.qsys
+Progress: Reading input file
+Progress: Adding clk_0 [clock_source 20.1]
+Progress: Parameterizing module clk_0
+Progress: Adding new_sdram_controller_0 [altera_avalon_new_sdram_controller 20.1]
+Progress: Parameterizing module new_sdram_controller_0
+Progress: Adding pll_0 [altera_pll 20.1]
+Progress: Parameterizing module pll_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: RAMSYS.new_sdram_controller_0: SDRAM Controller will only be supported in Quartus Prime Standard Edition in the future release.
+Info: RAMSYS.pll_0: The legal reference clock frequency is 5.0 MHz..800.0 MHz
+Warning: RAMSYS.pll_0: Able to implement PLL - Actual settings differ from Requested settings
+Warning: RAMSYS.: You have exported the interface new_sdram_controller_0.s1 but not its associated clock interface.  Export the driver of new_sdram_controller_0.clk
+Info: qsys-generate succeeded.
+Info: Finished: Create block symbol file (.bsf)
+Info: 
+Info: Starting: Create HDL design files for synthesis
+Info: qsys-generate C:\Users\seand\Desktop\Programming\Mar28\RAMSYS.qsys --synthesis=VHDL --output-directory=C:\Users\seand\Desktop\Programming\Mar28\RAMSYS\synthesis --family="Cyclone V" --part=5CSEMA5F31C6
+Progress: Loading Mar28/RAMSYS.qsys
+Progress: Reading input file
+Progress: Adding clk_0 [clock_source 20.1]
+Progress: Parameterizing module clk_0
+Progress: Adding new_sdram_controller_0 [altera_avalon_new_sdram_controller 20.1]
+Progress: Parameterizing module new_sdram_controller_0
+Progress: Adding pll_0 [altera_pll 20.1]
+Progress: Parameterizing module pll_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: RAMSYS.new_sdram_controller_0: SDRAM Controller will only be supported in Quartus Prime Standard Edition in the future release.
+Info: RAMSYS.pll_0: The legal reference clock frequency is 5.0 MHz..800.0 MHz
+Warning: RAMSYS.pll_0: Able to implement PLL - Actual settings differ from Requested settings
+Warning: RAMSYS.: You have exported the interface new_sdram_controller_0.s1 but not its associated clock interface.  Export the driver of new_sdram_controller_0.clk
+Info: RAMSYS: Generating RAMSYS "RAMSYS" for QUARTUS_SYNTH
+Info: new_sdram_controller_0: Starting RTL generation for module 'RAMSYS_new_sdram_controller_0'
+Info: new_sdram_controller_0:   Generation command is [exec C:/intelfpga_lite/20.1.1/quartus/bin64/perl/bin/perl.exe -I C:/intelfpga_lite/20.1.1/quartus/bin64/perl/lib -I C:/intelfpga_lite/20.1.1/quartus/sopc_builder/bin/europa -I C:/intelfpga_lite/20.1.1/quartus/sopc_builder/bin -I C:/intelfpga_lite/20.1.1/quartus/../ip/altera/sopc_builder_ip/common -I C:/intelfpga_lite/20.1.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_new_sdram_controller -- C:/intelfpga_lite/20.1.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_new_sdram_controller/generate_rtl.pl --name=RAMSYS_new_sdram_controller_0 --dir=C:/Users/seand/AppData/Local/Temp/alt9080_1309960604585769609.dir/0002_new_sdram_controller_0_gen/ --quartus_dir=C:/intelfpga_lite/20.1.1/quartus --verilog --config=C:/Users/seand/AppData/Local/Temp/alt9080_1309960604585769609.dir/0002_new_sdram_controller_0_gen//RAMSYS_new_sdram_controller_0_component_configuration.pl  --do_build_sim=0  ]
+Info: new_sdram_controller_0: Done RTL generation for module 'RAMSYS_new_sdram_controller_0'
+Info: new_sdram_controller_0: "RAMSYS" instantiated altera_avalon_new_sdram_controller "new_sdram_controller_0"
+Info: pll_0: "RAMSYS" instantiated altera_pll "pll_0"
+Info: rst_controller: "RAMSYS" instantiated altera_reset_controller "rst_controller"
+Info: RAMSYS: Done "RAMSYS" with 4 modules, 7 files
+Info: qsys-generate succeeded.
+Info: Finished: Create HDL design files for synthesis
