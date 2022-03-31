@@ -1,12 +1,12 @@
 library ieee;
 use ieee.std_logic_1164.all;
-use ieee.std_logic_unsigned.all;
+use ieee.std_logic_unsigned.all;        -- @suppress "Deprecated package"
 
 entity Win_logic is
 
-	type CellType is array (0 to 8, 0 to 1) of std_logic;
+    --(type CellType is array (0 to 8, 0 to 1) of std_logic;
 
-	port(Cells   : in  CellType;
+    port(Cells : in array (0 to 8, 0 to 1) of std_logic;
 		  BoardWon: out std_logic;
 		  Winner  : out std_logic_vector(1 downto 0)
 		  );
@@ -14,8 +14,8 @@ end Win_logic;
 
 architecture logic of Win_logic is
 
-signal BlueWin std_logic;
-signal RedWin  std_logic;
+signal BlueWin :std_logic;
+signal RedWin  :std_logic;
 
 
 begin
