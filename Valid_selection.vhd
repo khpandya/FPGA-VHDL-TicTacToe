@@ -1,18 +1,15 @@
-
 library ieee;
 use ieee.std_logic_1164.all;
-use ieee.std_logic_unsigned.all;
+use ieee.std_logic_unsigned.all; -- @suppress "Deprecated package"
+use work.Common.all;
 
 
 
 entity Valid_selection is
-
-	type CellType is array (0 to 8, 0 to 1) of std_logic;
-
     port (Cells:          in  CellType;
 	       CellSelect:     in  std_logic_vector(8 downto 0);
 			 BoardWon:       in  std_logic;
-		    ValidSelection: out std_logic;
+		    ValidSelection: out std_logic
 	 );
 end Valid_selection;
 
@@ -21,8 +18,8 @@ end Valid_selection;
 
 architecture logic of Valid_selection is
 
-signal CellFull, CellConflict std_logic_vector(8 downto 0);
-signal NoCellConflict std_logic;
+signal CellFull, CellConflict :std_logic_vector(8 downto 0);
+signal NoCellConflict :std_logic;
 
 
 begin
