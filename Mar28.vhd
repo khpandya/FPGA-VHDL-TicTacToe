@@ -3,6 +3,8 @@ use ieee.std_logic_1164.all;
 use ieee.std_logic_unsigned.all;        -- @suppress "Deprecated package"
 use work.Common.all;
 
+--Sean commented this
+
 entity Mar28 is
     port(SW                                 : in  std_logic_vector(3 downto 0);
          KEY                                : in  std_logic_vector(3 downto 0);
