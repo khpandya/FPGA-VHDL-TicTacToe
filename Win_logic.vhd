@@ -5,7 +5,7 @@ use work.Common.all;
 
 entity Win_logic is
     port(Cells : in CellType;
-		  BoardWon: out std_logic;
+		  BoardWon: inout std_logic;
 		  Winner  : out std_logic_vector(1 downto 0)
 		  );
 end Win_logic;
