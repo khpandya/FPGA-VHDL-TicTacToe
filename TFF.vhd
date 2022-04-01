@@ -3,14 +3,14 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
  
-entity TFF is
+entity TFlipFlop is
 	port( T    : in  std_logic;
 	      Clock: in  std_logic;
 	      Q    : out std_logic
 	);
-end TFF;
+end TFlipFlop;
  
-architecture logic of TFF is
+architecture logic of TFlipFlop is
 
 signal tmp: std_logic;
 

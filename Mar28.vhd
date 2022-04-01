@@ -15,7 +15,7 @@ end Mar28;
 
 architecture logic of Mar28 is
 
-    component Decoder4_16 is
+    component Decoder_4_16 is
         port(input  : in  std_logic_vector(3 downto 0);
              output : out std_logic_vector(8 downto 0)
             );
@@ -54,7 +54,7 @@ architecture logic of Mar28 is
             );
     end component;
 
-    component TFF is
+    component TFlipFlop is
         port(T     : in  std_logic;
              Clock : in  std_logic;
              Q     : out std_logic
@@ -71,12 +71,12 @@ architecture logic of Mar28 is
 
 BEGIN
     --input                         --output
-    load_switches : Decoder4_16 port map(SW(3 downto 0), CellSelect);
+    load_switches : Decoder_4_16 port map(SW(3 downto 0), CellSelect);
     determine_selection_validity : Valid_selection port map(Cells, CellSelect, BoardWon, ValidSelection);
     determine_board_win_state : Win_logic port map(Cells, BoardWon, Winner);
     determine_board_cell_state : Cell_logic port map(Q, CellSelect, BoardWon, Cells);
     determine_display : Display_eval port map(BoardWon, Winner, Cells, Display);
-    Turn : TFF port map(ValidSelection, KEY(0), Q);
+    Turn : TFlipFlop port map(ValidSelection, KEY(0), Q);
 
     LEDR(9) <= Q;
     LEDR(8) <= Q;

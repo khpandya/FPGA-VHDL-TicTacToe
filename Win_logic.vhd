@@ -22,6 +22,6 @@ begin
 	BlueWin  <= (Cells(0,0) and Cells(1,0) and Cells(2,0)) or (Cells(3,0) and Cells(4,0) and Cells(5,0)) or (Cells(6,0) and Cells(7,0) and Cells(8,0)) or (Cells(0,0) and Cells(3,0) and Cells(6,0)) or (Cells(1,0) and Cells(4,0) and Cells(7,0)) or (Cells(2,0) and Cells(5,0) and Cells(8,0)) or (Cells(0,0) and Cells(4,0) and Cells(8,0)) or (Cells(2,0) and Cells(4,0) and Cells(6,0));
 	Winner(0) <= BlueWin;
 	Winner(1) <= RedWin;
-	BoardWon  <= BoardWon and (Cells(0,0) or Cells(1,0) or Cells(2,0) or Cells(3,0) or Cells(4,0) or Cells(5,0) or Cells(6,0) or Cells(7,0) or Cells(8,0) or Cells(0,1) or Cells(1,1) or Cells(2,1) or Cells(3,1) or Cells(4,1) or Cells(5,1) or Cells(6,1) or Cells(7,1) or Cells(8,1)); 
+	BoardWon  <= (BoardWon or BlueWin or RedWin) and (Cells(0,0) or Cells(1,0) or Cells(2,0) or Cells(3,0) or Cells(4,0) or Cells(5,0) or Cells(6,0) or Cells(7,0) or Cells(8,0) or Cells(0,1) or Cells(1,1) or Cells(2,1) or Cells(3,1) or Cells(4,1) or Cells(5,1) or Cells(6,1) or Cells(7,1) or Cells(8,1)); 
 	
 end logic;
